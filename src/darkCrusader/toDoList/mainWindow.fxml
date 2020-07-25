@@ -1,0 +1,56 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<BorderPane fx:id="mainBorderPane" fx:controller="darkCrusader.toDoList.Controller"
+            xmlns:fx="http://javafx.com/fxml">
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <MenuItem text="Add new Item" onAction="#showNewItemDialog"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Exit" onAction="#exitProgram"/>
+                </Menu>
+            </MenuBar>
+            <ToolBar>
+                <HBox style="-fx-spacing: 10;">
+                    <Button text="New Todo" onAction="#showNewItemDialog">
+                        <tooltip>
+                            <Tooltip text="Add a new Todo Item"/>
+                        </tooltip>
+                    </Button>
+                    <Button text="Delete" onAction="#deleteSelectedTodo">
+                        <tooltip>
+                            <Tooltip text="Delete the selected Todo Item"/>
+                        </tooltip>
+                    </Button>
+                    <ToggleButton fx:id="filterToggle" text="Today's Todo" onAction="#handleFilter">
+                        <tooltip>
+                            <Tooltip text="Toggle to show only today's todo's"/>
+                        </tooltip>
+                    </ToggleButton>
+                </HBox>
+            </ToolBar>
+        </VBox>
+    </top>
+    <left>
+        <ListView fx:id="todoListView" onKeyPressed="#handleKeyPress"/>
+    </left>
+    <center>
+        <VBox style="-fx-background-color: white">
+            <TextArea fx:id="itemDetails" VBox.vgrow="ALWAYS" wrapText="true" editable="false"/>
+            <HBox style="-fx-padding: 5 0 5 5">
+                <Label text="Due: ">
+                    <font>
+                        <Font name="Times New Roman bold" size="20"/>
+                    </font>
+                </Label>
+                <Label fx:id="deadlineLabel">
+                    <font>
+                        <Font name="Times New Roman bold" size="20"/>
+                    </font>
+                </Label>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
